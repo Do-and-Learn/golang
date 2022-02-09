@@ -1,6 +1,7 @@
 FROM golang:1.17 AS builder
 
 WORKDIR /usr/src/app
+RUN go mod init htmlT
 
 # Build go-sqlite3 package
 RUN go get github.com/mattn/go-sqlite3@v1.14.11
