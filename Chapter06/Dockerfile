@@ -1,14 +1,23 @@
-FROM golang:1.17 AS build-stage
+FROM golang:1.17 AS builder
 
 WORKDIR /usr/src/app
 
-RUN go get github.com/mattn/go-sqlite3
+# Build go-sqlite3 package
+RUN go get github.com/mattn/go-sqlite3@v1.14.11
 
-# RUN ...
+# Install sqlite
+RUN apt-get update
+RUN apt-get install sqlite3
+RUN sqlite3 htmlT.db "CREATE TABLE data (number INTEGER PRIMARY KEY, double INTEGER, square INTEGER);"
 
-# FROM golang:1.17
+# Build program
+COPY htmlT.go html.gohtml .
+RUN go build htmlT.go
 
-# RUN COPY --from build-stage 
+FROM golang:1.17
 
-# CMD COPY htmlT.go text.gotext .
+WORKDIR /usr/src/app
+COPY --from=builder /usr/src/app/htmlT /usr/src/app/html.gohtml /usr/src/app/htmlT.db .
 
+EXPOSE 8080
+ENTRYPOINT ["./htmlT"]
