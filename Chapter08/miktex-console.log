@@ -1,0 +1,5 @@
+2021-04-26 10:18:35,582+0800 INFO  main - starting: MiKTeX Console 4.2 (MiKTeX 21.2)
+2021-04-26 10:18:37,731+0800 WARN  miktex-console.packagemanager - dependancy problem: tools is required by _miktex-latex-required
+2021-04-26 10:18:37,732+0800 WARN  miktex-console.packagemanager - dependancy problem: miktex-doc-2.9 is required by _miktex-packages-2.9
+2021-04-26 10:18:38,037+0800 INFO  mainwindow - checking for updates...
+2021-04-26 10:18:38,046+0800 INFO  miktex-console.packagemanager - searching for updateable packages
